@@ -107,8 +107,9 @@ export class AdminService {
         if (stat === "photo") {
           let newArrP: string[] = [];
           newArrP.push(element);
+          const rta = [...ojetEdit.photo, ...newArrP]
           let articleX = await ProductM.update(
-            { photo: [...ojetEdit.photo, ...newArrP] },
+            { photo: rta },
             { where: { id } }
           );
           return articleX;
@@ -117,8 +118,9 @@ export class AdminService {
           let newArrC: string[] = [];
           newArrC.push(element);
           if (ojetEdit.color) {
+            const rta = [...ojetEdit.color, ...newArrC]
             let articleX = await ProductM.update(
-              { color: [...ojetEdit.color, ...newArrC] },
+              { color: rta },
               { where: { id } }
             );
             return articleX;
@@ -149,8 +151,9 @@ export class AdminService {
           let newArrS: number[] = [];
           newArrS.push(element);
           if (ojetEdit.size) {
+            const rta = [...ojetEdit.size, ...newArrS]
             let articleX = await ProductM.update(
-              { size: [...ojetEdit.size, ...newArrS] },
+              { size: rta },
               { where: { id } }
             );
             return articleX;

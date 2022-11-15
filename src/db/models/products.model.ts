@@ -45,11 +45,11 @@ product.init(
     color:{
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
-    size:{
-      type: DataTypes.ARRAY(DataTypes.INTEGER),
-    },
     photo: {
       type: DataTypes.ARRAY(DataTypes.STRING),
+    },
+    size:{
+      type: DataTypes.ARRAY(DataTypes.INTEGER),
     },
     rated: {
       type: DataTypes.DECIMAL,
