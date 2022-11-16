@@ -71,6 +71,17 @@ class AdminService {
                         let articleX = yield products_model_2.default.update({ name: element }, { where: { id } });
                         return articleX;
                     }
+                    if (stat === "size") {
+                        let newArrS = [];
+                        newArrS.push(element);
+                        if (ojetEdit.size) {
+                            const rta = [...ojetEdit.size, ...newArrS];
+                            let articleX = yield products_model_2.default.update({ size: rta }, { where: { id } });
+                            return articleX;
+                        }
+                        let articleX = yield products_model_2.default.update({ size: newArrS }, { where: { id } });
+                        return articleX;
+                    }
                     if (stat === "description") {
                         let articleX = yield products_model_2.default.update({ description: element }, { where: { id } });
                         return articleX;
@@ -101,17 +112,6 @@ class AdminService {
                     }
                     if (stat === "price") {
                         let articleX = yield products_model_2.default.update({ price: element }, { where: { id } });
-                        return articleX;
-                    }
-                    if (stat === "size") {
-                        let newArrS = [];
-                        newArrS.push(element);
-                        if (ojetEdit.size) {
-                            const rta = [...ojetEdit.size, ...newArrS];
-                            let articleX = yield products_model_2.default.update({ size: rta }, { where: { id } });
-                            return articleX;
-                        }
-                        let articleX = yield products_model_2.default.update({ size: newArrS }, { where: { id } });
                         return articleX;
                     }
                 }

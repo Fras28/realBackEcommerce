@@ -8,7 +8,7 @@ export type Product = {
   id?: number;
   name: string;
   description: string;
-  size?: number[];
+  size?: string[];
   color?: string[];
   photo: string[];
   rated: number;

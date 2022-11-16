@@ -9,7 +9,7 @@ export type Product = {
   id?: number;
   name: string;
   description: string;
-  size?: number[];
+  size?: string[];
   color?: string[];
   photo: string[];
   rated: number;
@@ -97,6 +97,23 @@ export class AdminService {
           );
           return articleX;
         }
+        if (stat === "size") {
+          let newArrS: string[] = [];
+          newArrS.push(element);
+          if (ojetEdit.size) {
+            const rta = [...ojetEdit.size, ...newArrS]
+            let articleX = await ProductM.update(
+              { size: rta },
+              { where: { id } }
+            );
+            return articleX;
+          }
+          let articleX = await ProductM.update(
+            { size: newArrS },
+            { where: { id } }
+          );
+          return articleX;
+        }
         if (stat === "description") {
           let articleX = await ProductM.update(
             { description: element },
@@ -143,23 +160,6 @@ export class AdminService {
         if (stat === "price") {
           let articleX = await ProductM.update(
             { price: element },
-            { where: { id } }
-          );
-          return articleX;
-        }
-        if (stat === "size") {
-          let newArrS: number[] = [];
-          newArrS.push(element);
-          if (ojetEdit.size) {
-            const rta = [...ojetEdit.size, ...newArrS]
-            let articleX = await ProductM.update(
-              { size: rta },
-              { where: { id } }
-            );
-            return articleX;
-          }
-          let articleX = await ProductM.update(
-            { size: newArrS },
             { where: { id } }
           );
           return articleX;

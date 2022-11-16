@@ -5,7 +5,7 @@ interface ProductsAttributes {
   id?: number;
   name: string;
   description: string;
-  size?:number[];
+  size?:string[];
   color?:string[];
   photo: string[];
   rated: number;
@@ -17,7 +17,7 @@ class product extends Model<ProductsAttributes> {
   public id?: number;
   public name!: string;
   public description!: string;
-  public size?:number[];
+  public size?:string[];
   public color?:string[];
   public photo!:string[];
   public rated!: number;
@@ -49,7 +49,7 @@ product.init(
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
     size:{
-      type: DataTypes.ARRAY(DataTypes.INTEGER),
+      type: DataTypes.ARRAY(DataTypes.STRING),
     },
     rated: {
       type: DataTypes.DECIMAL,
