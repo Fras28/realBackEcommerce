@@ -76,7 +76,6 @@ exports.newAdmin = newAdmin;
 //Crear nueva pelicula
 const newProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        console.log("==========a=================a=a");
         const infoNewProduct = req.body;
         yield adminService.addProduct(infoNewProduct);
         res.status(200).send(`Product: ${infoNewProduct.name}  added successfully👍`);

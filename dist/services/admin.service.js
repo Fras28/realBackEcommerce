@@ -78,14 +78,16 @@ class AdminService {
                     if (stat === "photo") {
                         let newArrP = [];
                         newArrP.push(element);
-                        let articleX = yield products_model_2.default.update({ photo: [...ojetEdit.photo, ...newArrP] }, { where: { id } });
+                        const rta = [...ojetEdit.photo, ...newArrP];
+                        let articleX = yield products_model_2.default.update({ photo: rta }, { where: { id } });
                         return articleX;
                     }
                     if (stat === "color") {
                         let newArrC = [];
                         newArrC.push(element);
                         if (ojetEdit.color) {
-                            let articleX = yield products_model_2.default.update({ color: [...ojetEdit.color, ...newArrC] }, { where: { id } });
+                            const rta = [...ojetEdit.color, ...newArrC];
+                            let articleX = yield products_model_2.default.update({ color: rta }, { where: { id } });
                             return articleX;
                         }
                         let articleX = yield products_model_2.default.update({ color: newArrC }, { where: { id } });
@@ -105,7 +107,8 @@ class AdminService {
                         let newArrS = [];
                         newArrS.push(element);
                         if (ojetEdit.size) {
-                            let articleX = yield products_model_2.default.update({ size: [...ojetEdit.size, ...newArrS] }, { where: { id } });
+                            const rta = [...ojetEdit.size, ...newArrS];
+                            let articleX = yield products_model_2.default.update({ size: rta }, { where: { id } });
                             return articleX;
                         }
                         let articleX = yield products_model_2.default.update({ size: newArrS }, { where: { id } });

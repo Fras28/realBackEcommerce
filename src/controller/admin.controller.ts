@@ -59,7 +59,6 @@ export const newAdmin = async (req: Request, res: Response) => {
 //Crear nueva pelicula
 export const newProduct = async (req: Request, res: Response) => {
   try {
-    console.log("==========a=================a=a")
     const infoNewProduct:product = req.body;
     await adminService.addProduct(infoNewProduct);
     res.status(200).send(`Product: ${infoNewProduct.name}  added successfully👍`);

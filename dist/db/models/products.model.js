@@ -22,11 +22,11 @@ product.init({
     color: {
         type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
     },
-    size: {
-        type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.INTEGER),
-    },
     photo: {
         type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
+    },
+    size: {
+        type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.INTEGER),
     },
     rated: {
         type: sequelize_1.DataTypes.DECIMAL,
