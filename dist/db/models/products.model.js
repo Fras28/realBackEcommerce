@@ -13,7 +13,7 @@ product.init({
         autoIncrement: true,
         primaryKey: true,
     },
-    name: {
+    pedido: {
         type: sequelize_1.DataTypes.STRING,
     },
     description: {
@@ -28,7 +28,7 @@ product.init({
     size: {
         type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
     },
-    rated: {
+    mesa: {
         type: sequelize_1.DataTypes.DECIMAL,
     },
     price: {

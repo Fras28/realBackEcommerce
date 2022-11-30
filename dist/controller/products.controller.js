@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addProduct = exports.getProdcutId = exports.fullDbProducts = void 0;
+exports.deletProd = exports.addProduct = exports.getProdcutId = exports.fullDbProducts = void 0;
 const products_model_1 = __importDefault(require("../db/models/products.model"));
 const product_service_1 = require("../services/product.service");
 const productsService = new product_service_1.ProductsService(new products_model_1.default());
@@ -54,4 +54,15 @@ const addProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.addProduct = addProduct;
+const deletProd = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.body;
+    try {
+        yield productsService.deletProd(id);
+        res.status(200).send("Article deleted successfully");
+    }
+    catch (e) {
+        res.status(400).send("Article not found");
+    }
+});
+exports.deletProd = deletProd;
 //Todo probado :)

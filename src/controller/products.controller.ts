@@ -39,6 +39,19 @@ export const addProduct = async (req: Request, res: Response) => {
     return res.status(404).send(e);
   }
 };
+
+  export const deletProd = async (req: Request, res: Response) => {
+    const {id} = req.body;
+    try{
+      await productsService.deletProd(id);
+      res.status(200).send("Article deleted successfully");
+    }catch(e){
+      res.status(400).send("Article not found");
+    }
+  };
+
+
+
  
 
 //Todo probado :)

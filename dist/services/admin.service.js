@@ -35,7 +35,7 @@ class AdminService {
     }
     addProduct(product) {
         return __awaiter(this, void 0, void 0, function* () {
-            const findInDb = yield products_model_1.default.findOne({ where: { name: product.name } });
+            const findInDb = yield products_model_1.default.findOne({ where: { pedido: product.pedido } });
             console.log(findInDb);
             if (!findInDb) {
                 console.log("=============entrandooo======");
@@ -58,17 +58,13 @@ class AdminService {
             }
         });
     }
-    //  name: string;
-    //   description: string;
-    //   photo: string;
-    //   rated: string;
     modifierProduct(stat, element, id) {
         return __awaiter(this, void 0, void 0, function* () {
             const ojetEdit = yield products_model_2.default.findOne({ where: { id } });
             if (ojetEdit) {
                 if (typeof element === "string") {
-                    if (stat === "name") {
-                        let articleX = yield products_model_2.default.update({ name: element }, { where: { id } });
+                    if (stat === "pedido") {
+                        let articleX = yield products_model_2.default.update({ pedido: element }, { where: { id } });
                         return articleX;
                     }
                     if (stat === "size") {
@@ -106,8 +102,8 @@ class AdminService {
                     }
                 }
                 if (typeof element === "number") {
-                    if (stat === "rated") {
-                        let articleX = yield products_model_2.default.update({ rated: element }, { where: { id } });
+                    if (stat === "mesa") {
+                        let articleX = yield products_model_2.default.update({ mesa: element }, { where: { id } });
                         return articleX;
                     }
                     if (stat === "price") {
@@ -126,8 +122,8 @@ class AdminService {
     }
     editeName(id, string) {
         return __awaiter(this, void 0, void 0, function* () {
-            let editName = yield products_model_1.default.update({ name: string }, { where: { id } });
-            return editName;
+            let editPedido = yield products_model_1.default.update({ pedido: string }, { where: { id } });
+            return editPedido;
         });
     }
     getUserByEmail(email) {

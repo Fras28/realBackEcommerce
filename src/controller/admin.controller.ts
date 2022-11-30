@@ -61,7 +61,7 @@ export const newProduct = async (req: Request, res: Response) => {
   try {
     const infoNewProduct:product = req.body;
     await adminService.addProduct(infoNewProduct);
-    res.status(200).send(`Product: ${infoNewProduct.name}  added successfully👍`);
+    res.status(200).send(`Product: ${infoNewProduct.pedido}  added successfully👍`);
   } catch (e) {
     res.status(404).send("something went rong whit this Prodcut, or already exists ");
   }

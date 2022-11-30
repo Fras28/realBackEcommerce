@@ -1,140 +1,92 @@
-import { Router } from "express";
-import { addProduct, fullDbProducts, getProdcutId} from "../controller/products.controller";
-import {  addFav,/* addLimit,*/ addUser, deletUser, editUser, listFav } from "../controller/users.controller";
-import { fullDBComments, addComment, byIdComments, byIdCommentsUser, deleteComments, editComments } from "../controller/comments.controller"
-import {  bannComments, bannUser, editProduct, fullUsers, getUser, newAdmin, newProduct, suspProduct, unBannUser} from "../controller/admin.controller"
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const products_controller_1 = require("../controller/products.controller");
+const users_controller_1 = require("../controller/users.controller");
+const comments_controller_1 = require("../controller/comments.controller");
+const admin_controller_1 = require("../controller/admin.controller");
 // import {apiGold, createPaymentGold, executePaymentGold, goldToken} from "../controller/paymentGold.controller"
 // import {apiSilver, createPaymentSilver, executePaymentSilver, silverToken} from "../controller/paymentSilver.controller"
 //import { nodemailerBannUser, nodemailerCreateUser, nodemailerUnbannUser } from "../controller/nodemailer";
-
-
-const router = Router();
-
-//------------------------------------- GETS DE MOVIES--------------------------------
-
+const router = (0, express_1.Router)();
+//------------------------------------- GETS DE PRODUCTOS--------------------------------
 //GET ALL MOVIES
-router.get("/",fullDbProducts)
-
+router.get("/", products_controller_1.fullDbProducts);
 //GET BY ID MOVIES
-router.get('/detail/:id', getProdcutId)
-
+router.get('/detail/:id', products_controller_1.getProdcutId);
+router.delete("/destroyP", products_controller_1.deletProd);
 //------------------------------------ GETS DE COMMENTS--------------------------------
-
 //GET COMMENT ID USER
-router.get("/commentUser", byIdCommentsUser)
-
+router.get("/commentUser", comments_controller_1.byIdCommentsUser);
 //GET COMMENT ID MOVIES
-router.get("/comments", byIdComments)
-
+router.get("/comments", comments_controller_1.byIdComments);
 //GET COMMENTS
-router.get("/allComments", fullDBComments)
-
+router.get("/allComments", comments_controller_1.fullDBComments);
 //----------------------------------- POSTS DE COMMENTS--------------------------------
-
 //POST COMMENTS
-router.post('/detail/:id', addComment)
-
+router.post('/detail/:id', comments_controller_1.addComment);
 //DELETE COMMENT
-router.post('/detail', deleteComments)
-
+router.post('/detail', comments_controller_1.deleteComments);
 //DELETE COMMENT
-router.put('/editComment', editComments)
-
+router.put('/editComment', comments_controller_1.editComments);
 //----------------------------------- POSTS/PUT DE USERS--------------------------------
-
 //CREAR USER--> el modelo de users(esta en ds en Info-Back)
-router.post('/newU', addUser)
-
+router.post('/newU', users_controller_1.addUser);
 //CREAR USER--> el modelo de users(esta en ds en Info-Back, name, lastname, date)
-router.put('/editU', editUser)
-
+router.put('/editU', users_controller_1.editUser);
 //AGREGA FAVORITO
-router.post('/addFav', addFav)
-
+router.post('/addFav', users_controller_1.addFav);
 //TODOS LOS FAVORITOS
-router.get('/allFavs', listFav)
-
+router.get('/allFavs', users_controller_1.listFav);
 //----------------------------------- GETS DE ADMIN--------------------------------
-
 //GET ALL USERS--> para slect de todos los usuarios
-router.get("/users", fullUsers)
-
+router.get("/users", admin_controller_1.fullUsers);
 //GET USER BY EMAIL--> necesito email por params en string
-router.get("/Uemail/:email", getUser)
-
+router.get("/Uemail/:email", admin_controller_1.getUser);
 //----------------------------------- POSTS/PUTS DE ADMIN  PARA USERS--------------------------------
-
 //BANN USER--> necesito id(numerico) por body
-router.put("/bannUser", bannUser)
-
+router.put("/bannUser", admin_controller_1.bannUser);
 //UNBANN USER--> necesito id(numerico) por body
-router.put("/unBannUser", unBannUser)
-
+router.put("/unBannUser", admin_controller_1.unBannUser);
 //CREATE NEW ADMIN--> necesito id(numerico) por body
-router.put("/createAdm", newAdmin)
-
+router.put("/createAdm", admin_controller_1.newAdmin);
 //DELETE USERS 
-router.post('/deletUser', deletUser)
-
+router.post('/deletUser', users_controller_1.deletUser);
 //------------------------------------- POSTS/PUTS DE MOVIES BY ADMIN-------------------------------
-
 //SUSPEND MOVIE--> necesito id(numerico) por body
-router.put("/removeP", suspProduct)
-
+router.put("/removeP", admin_controller_1.suspProduct);
 //POSTS MOVIE--> el modelo de blockbusters(esta en ds en Info-Back)
-router.post('/addP', newProduct)
-
-router.put("/editP", editProduct )
-
+router.post('/addP', admin_controller_1.newProduct);
+router.put("/editP", admin_controller_1.editProduct);
 // //LIMITER GOLD/SILVER
 // router.put("/limiter", addLimit)
-
 //------------------------------------- POSTS/PUTS DE COMMENTS BY ADMIN-------------------------------
-
 //BANN COMMENT
-router.put("/bannComments", bannComments)
-
+router.put("/bannComments", admin_controller_1.bannComments);
 //-------------------------------------- NODEMAILER------------------------------------------
 //SEND SPAM NEW MOVIE 
 // router.get("/nodemailer", nodemaileraddProduct)
-
 //SEND SPAM WELCOME EMAILS TO CLIENTS
 //router.get("/nodemaileru", nodemailerCreateUser)
-
 //SEND SPAM THE THE ADMIN BANN SOMEONE
 //router.get("/nodemailerb", nodemailerBannUser)
-
 //UNBANN USER
 //router.get("/nodemailerun", nodemailerUnbannUser)
-
 //---------------------------------------------- PAYPAL ---------------------------------------------------------
-
 // //    http://localhost:3000/create-paymentGold [POST]
 // router.post('/create-paymentGold', createPaymentGold)
-
 // //PAYMENT
 // router.get('/execute-paymentGold', executePaymentGold )
-
 // //    http://localhost:3000/create-paymentSilver[POST]
 // router.post('/create-paymentSilver', createPaymentSilver)
-
 // //PAYMENT
 // router.get('/execute-paymentSilver', executePaymentSilver)
-
 //CHANGE GOLD
 // router.put('/apiGold', apiGold)
-
 // //CHANGE SILVER
 // router.put('/apiSilver', apiSilver)
-
 // //FUNCION PARA SETEAR TOKEN SILVER
 // router.put("/setTokenSilver", silverToken)
-
 //FUNCION PARA SETEAR TOKEN GOLD
 // router.put("/setTokenGold", goldToken)
-
-
-
-export default router;
-
-
+exports.default = router;

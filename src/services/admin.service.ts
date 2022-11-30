@@ -7,12 +7,12 @@ import { where } from "sequelize";
 
 export type Product = {
   id?: number;
-  name: string;
+  pedido: string;
   description: string;
   size?: string[];
   color?: string[];
-  photo: string[];
-  rated: number;
+  photo?: string[];
+  mesa: number;
   price: number;
   status: boolean;
 };
@@ -55,7 +55,7 @@ export class AdminService {
   }
 
   async addProduct(product: Product) {
-    const findInDb = await Products.findOne({ where: { name: product.name } });
+    const findInDb = await Products.findOne({ where: { pedido: product.pedido } });
     console.log(findInDb);
     if (!findInDb) {
       console.log("=============entrandooo======");
@@ -82,17 +82,14 @@ export class AdminService {
     }
   }
 
-  //  name: string;
-  //   description: string;
-  //   photo: string;
-  //   rated: string;
+
   async modifierProduct(stat: string, element: string | number, id: number) {
     const ojetEdit = await ProductM.findOne({ where: { id } });
     if (ojetEdit) {
       if (typeof element === "string") {
-        if (stat === "name") {
+        if (stat === "pedido") {
           let articleX = await ProductM.update(
-            { name: element },
+            { pedido: element },
             { where: { id } }
           );
           return articleX;
@@ -150,9 +147,9 @@ export class AdminService {
         }
       }
       if (typeof element === "number") {
-        if (stat === "rated") {
+        if (stat === "mesa") {
           let articleX = await ProductM.update(
-            { rated: element },
+            { mesa: element },
             { where: { id } }
           );
           return articleX;
@@ -174,8 +171,8 @@ export class AdminService {
   }
 
   async editeName(id: number, string: string) {
-    let editName = await Products.update({ name: string }, { where: { id } });
-    return editName;
+    let editPedido = await Products.update({ pedido: string }, { where: { id } });
+    return editPedido;
   }
 
   async getUserByEmail(email: string) {
@@ -206,4 +203,7 @@ export class AdminService {
     let bann = await Comments.update({ status: false }, { where: { idUser } });
     return bann;
   }
+
+
+
 }

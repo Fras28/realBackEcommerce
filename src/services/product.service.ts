@@ -6,12 +6,12 @@ import { Comment } from "./coments.service";
 
 export type Product = {
   id?: number;
-  name: string;
+  pedido: string;
   description: string;
   size?: string[];
   color?: string[];
   photo: string[];
-  rated: number;
+  mesa: number;
   price: number;
   status: boolean;
   comment?: Comment;
@@ -29,12 +29,19 @@ export class ProductsService {
 
   //----------------- Creador de peliculas -------
   async insertOne(product: Product) {
-    const oldProd = await Products.findOne({ where: { name: product.name } });
+    const oldProd = await Products.findOne({ where: { pedido: product.pedido } });
     console.log(oldProd);
     if (!oldProd) {
       return await Products.create(product, { validate: true });
     } else console.log("ese producto ya existe");
   }
+
+  async deletProd(id: number) {
+    let deletUser = Products.destroy({ where: { id } });
+    return deletUser;
+  }
+
+
 }
 
 //Todo probado :)

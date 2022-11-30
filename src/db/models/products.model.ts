@@ -3,24 +3,24 @@ import sequelizeConnection from "../db";
 
 interface ProductsAttributes {
   id?: number;
-  name: string;
+  pedido: string;
   description: string;
   size?:string[];
   color?:string[];
-  photo: string[];
-  rated: number;
+  photo?: string[];
+  mesa: number;
   price:number;
   status: boolean;
 }
 
 class product extends Model<ProductsAttributes> {
   public id?: number;
-  public name!: string;
+  public pedido!: string;
   public description!: string;
   public size?:string[];
   public color?:string[];
   public photo!:string[];
-  public rated!: number;
+  public mesa!: number;
   public price!:number;
   public status!: boolean;
 
@@ -36,7 +36,7 @@ product.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    name: {
+    pedido: {
       type: DataTypes.STRING,
     },
     description: {
@@ -51,7 +51,7 @@ product.init(
     size:{
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
-    rated: {
+    mesa: {
       type: DataTypes.DECIMAL,
     },
     price:{

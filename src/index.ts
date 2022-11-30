@@ -8,7 +8,7 @@ import cors from "cors"
 
 
 
-import router from "./routes/blockbuster.routes";
+import router from "./routes/ecomm.routes";
 
 dotenv.config();
 

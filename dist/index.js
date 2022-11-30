@@ -10,7 +10,7 @@ const morgan_1 = __importDefault(require("morgan"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const init_1 = __importDefault(require("./db/init"));
 const cors_1 = __importDefault(require("cors"));
-const blockbuster_routes_1 = __importDefault(require("./routes/blockbuster.routes"));
+const ecomm_routes_1 = __importDefault(require("./routes/ecomm.routes"));
 dotenv_1.default.config();
 (0, init_1.default)();
 const app = (0, express_1.default)();
@@ -27,7 +27,7 @@ app.use((_req, res, next) => {
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
     next();
 });
-app.use(blockbuster_routes_1.default);
+app.use(ecomm_routes_1.default);
 app.listen(port, () => {
     console.log(`Server running en ${port}`);
 });

@@ -29,13 +29,19 @@ class ProductsService {
     //----------------- Creador de peliculas -------
     insertOne(product) {
         return __awaiter(this, void 0, void 0, function* () {
-            const oldProd = yield products_model_1.default.findOne({ where: { name: product.name } });
+            const oldProd = yield products_model_1.default.findOne({ where: { pedido: product.pedido } });
             console.log(oldProd);
             if (!oldProd) {
                 return yield products_model_1.default.create(product, { validate: true });
             }
             else
                 console.log("ese producto ya existe");
+        });
+    }
+    deletProd(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let deletUser = products_model_1.default.destroy({ where: { id } });
+            return deletUser;
         });
     }
 }
