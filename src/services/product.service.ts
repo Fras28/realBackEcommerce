@@ -12,6 +12,7 @@ export type Product = {
   color?: string[];
   photo: string[];
   mesa: number;
+  comercio:string;
   price: number;
   status: boolean;
   comment?: Comment;
