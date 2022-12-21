@@ -22,7 +22,7 @@ class product extends Model<ProductsAttributes> {
   public color?:string[];
   public photo!:string[];
   public mesa!: number;
-  public comercio?: string;
+  public comercio!: string;
   public price!:number;
   public status!: boolean;
 
