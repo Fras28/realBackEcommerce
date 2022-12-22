@@ -10,6 +10,7 @@ interface ProductsAttributes {
   photo?: string[];
   mesa?: number;
   comercio?: string
+  section?:string;
   price:number;
   status: boolean;
 }
@@ -23,6 +24,7 @@ class product extends Model<ProductsAttributes> {
   public photo!:string[];
   public mesa!: number;
   public comercio!: string;
+  public section!: string;
   public price!:number;
   public status!: boolean;
 
@@ -59,6 +61,10 @@ product.init(
     comercio:{
       type: DataTypes.STRING,
     },
+    section:{
+      type: DataTypes.STRING,
+    }
+    ,
     price:{
       type: DataTypes.DECIMAL,
     },
