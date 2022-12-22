@@ -67,6 +67,16 @@ export const newProduct = async (req: Request, res: Response) => {
   }
 };
 
+export const newArticle = async (req: Request, res: Response) => {
+  try {
+    const infoNewProduct:product = req.body;
+    await adminService.addArticle(infoNewProduct);
+    res.status(200).send(`Product: ${infoNewProduct.pedido}  added successfully👍`);
+  } catch (e) {
+    res.status(404).send("something went rong whit this Prodcut, or already exists ");
+  }
+};
+
 export const editProduct = async(req:Request, res:Response)=>{
   const { stat, element, id } = req.body;
   try {

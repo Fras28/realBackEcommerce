@@ -40,6 +40,20 @@ export const addProduct = async (req: Request, res: Response) => {
   }
 };
 
+
+export const addArticle = async (req: Request, res: Response) => {
+  const articulo = req.body
+  console.log(req);
+  try {
+    const dbProd = await productsService.insertOneArt(articulo);
+    console.log(dbProd);
+    return res.status(200).send(dbProd);
+  } catch (e) {
+    return res.status(404).send(e);
+  }
+};
+
+
   export const deletProd = async (req: Request, res: Response) => {
     const {id} = req.body;
     try{

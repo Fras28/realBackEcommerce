@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { addProduct, deletProd, fullDbProducts, getProdcutId} from "../controller/products.controller";
+import { addArticle, addProduct, deletProd, fullDbProducts, getProdcutId} from "../controller/products.controller";
 import {  addFav,/* addLimit,*/ addUser, deletUser, editUser, listFav } from "../controller/users.controller";
 import { fullDBComments, addComment, byIdComments, byIdCommentsUser, deleteComments, editComments } from "../controller/comments.controller"
 import {  bannComments, bannUser, editProduct, fullUsers, getUser, newAdmin, newProduct, suspProduct, unBannUser} from "../controller/admin.controller"
@@ -85,6 +85,9 @@ router.put("/removeP", suspProduct)
 
 //POSTS MOVIE--> el modelo de blockbusters(esta en ds en Info-Back)
 router.post('/addP', newProduct)
+
+router.post('/addA', addArticle)
+
 
 router.put("/editP", editProduct )
 

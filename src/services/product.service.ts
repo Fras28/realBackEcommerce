@@ -38,6 +38,13 @@ export class ProductsService {
       return await Products.create(product, { validate: true });
     } else console.log("ese producto ya existe");
   }
+  async insertOneArt(articulo: Product) {
+    const oldProd = await Products.findOne({ where: { name: articulo.name } });
+    console.log(oldProd);
+    if (!oldProd) {
+      return await Products.create(articulo, { validate: true });
+    } else console.log("ese articulo ya existe");
+  }
 
   async deletProd(id: number) {
     let deletUser = Products.destroy({ where: { id } });

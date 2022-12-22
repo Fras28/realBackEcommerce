@@ -68,6 +68,17 @@ export class AdminService {
     throw Error;
   }
 
+  async addArticle(product: Product) {
+    const findInDb = await Products.findOne({ where: { name: product.name } });
+    console.log(findInDb);
+    if (!findInDb) {
+      console.log("=============entrandooo======");
+      return await Products.create(product, { validate: true });
+    }
+    console.log("llegamos aca");
+    throw Error;
+  }
+
   async statusProduct(id: number) {
     const productInfo = await Products.findAll({ where: { id } });
     if (productInfo[0].status === true) {
