@@ -13,6 +13,9 @@ product.init({
         autoIncrement: true,
         primaryKey: true,
     },
+    name: {
+        type: sequelize_1.DataTypes.STRING,
+    },
     pedido: {
         type: sequelize_1.DataTypes.STRING,
     },
@@ -30,6 +33,12 @@ product.init({
     },
     mesa: {
         type: sequelize_1.DataTypes.DECIMAL,
+    },
+    comercio: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    section: {
+        type: sequelize_1.DataTypes.STRING,
     },
     price: {
         type: sequelize_1.DataTypes.DECIMAL,
