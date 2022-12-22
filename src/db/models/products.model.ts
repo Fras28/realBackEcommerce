@@ -18,15 +18,15 @@ interface ProductsAttributes {
 
 class product extends Model<ProductsAttributes> {
   public id?: number;
-  public pedido!: string;
-  public name!: string;
+  public pedido?: string;
+  public name?: string;
   public description!: string;
   public size?:string[];
   public color?:string[];
-  public photo!:string[];
-  public mesa!: number;
+  public photo?:string[];
+  public mesa?: number;
   public comercio!: string;
-  public section!: string;
+  public section?: string;
   public price!:number;
   public status!: boolean;
 
