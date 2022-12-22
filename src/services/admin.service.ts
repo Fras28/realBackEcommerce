@@ -7,6 +7,7 @@ import { where } from "sequelize";
 
 export type Product = {
   id?: number;
+  name:string;
   pedido: string;
   description: string;
   size?: string[];
