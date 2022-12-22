@@ -1,50 +1,54 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
+var __importDefault =
+  (this && this.__importDefault) ||
+  function (mod) {
+    return mod && mod.__esModule ? mod : { default: mod };
+  };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const db_1 = __importDefault(require("../db"));
-class product extends sequelize_1.Model {
-}
-product.init({
+class product extends sequelize_1.Model {}
+product.init(
+  {
     id: {
-        type: sequelize_1.DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
+      type: sequelize_1.DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
     },
     name: {
-        type: sequelize_1.DataTypes.STRING,
+      type: sequelize_1.DataTypes.STRING,
     },
     pedido: {
-        type: sequelize_1.DataTypes.STRING,
+      type: sequelize_1.DataTypes.STRING,
     },
     description: {
-        type: sequelize_1.DataTypes.STRING,
+      type: sequelize_1.DataTypes.STRING,
     },
     color: {
-        type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
+      type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
     },
     photo: {
-        type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
+      type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
     },
     size: {
-        type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
+      type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
     },
     mesa: {
-        type: sequelize_1.DataTypes.DECIMAL,
+      type: sequelize_1.DataTypes.DECIMAL,
     },
     comercio: {
-        type: sequelize_1.DataTypes.STRING,
+      type: sequelize_1.DataTypes.STRING,
     },
     section: {
-        type: sequelize_1.DataTypes.STRING,
+      type: sequelize_1.DataTypes.STRING,
     },
     price: {
-        type: sequelize_1.DataTypes.DECIMAL,
+      type: sequelize_1.DataTypes.DECIMAL,
     },
     status: {
-        type: sequelize_1.DataTypes.BOOLEAN,
-    }
-}, { sequelize: db_1.default, paranoid: true });
+      type: sequelize_1.DataTypes.BOOLEAN,
+    },
+  },
+  { sequelize: db_1.default, paranoid: true }
+);
 exports.default = product;
