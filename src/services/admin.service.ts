@@ -7,13 +7,15 @@ import { where } from "sequelize";
 
 export type Product = {
   id?: number;
-  name:string;
-  pedido: string;
+  name?:string;
+  pedido?: string;
   description: string;
   size?: string[];
   color?: string[];
   photo?: string[];
-  mesa: number;
+  mesa?: number;
+  comercio:string;
+  section?:string;
   price: number;
   status: boolean;
 };
@@ -122,13 +124,20 @@ export class AdminService {
         if (stat === "photo") {
           let newArrP: string[] = [];
           newArrP.push(element);
-          const rta = [...ojetEdit.photo, ...newArrP]
+          if(ojetEdit.photo){
+            const rta = [...ojetEdit.photo, ...newArrP]
+            let articleX = await ProductM.update(
+              { photo: rta },
+              { where: { id } }
+            );
+            return articleX;
+          }
           let articleX = await ProductM.update(
-            { photo: rta },
+            { photo: newArrP },
             { where: { id } }
-          );
-          return articleX;
-        }
+            );
+            return articleX;
+          }
         if (stat === "color") {
           let newArrC: string[] = [];
           newArrC.push(element);
