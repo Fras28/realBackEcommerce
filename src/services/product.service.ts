@@ -6,15 +6,15 @@ import { Comment } from "./coments.service";
 
 export type Product = {
   id?: number;
-  name:string;
-  pedido: string;
+  name?:string;
+  pedido?: string;
   description: string;
   size?: string[];
   color?: string[];
-  photo: string[];
+  photo?: string[];
   mesa: number;
   comercio:string;
-  section:string;
+  section?:string;
   price: number;
   status: boolean;
   comment?: Comment;
