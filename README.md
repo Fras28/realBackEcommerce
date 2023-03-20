@@ -35,11 +35,13 @@ $ npm install
 ## Running the app
 
 ```bash
-# development
-$ npm run start
 
-# watch mode
+# delelopment mode + watch mode
 $ npm run start:dev
+
+#in anohter bash window you have to start de mongo instance
+
+$ sudo mongod
 
 # production mode
 $ npm run start:prod

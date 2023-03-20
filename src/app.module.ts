@@ -8,6 +8,10 @@ import { UserModule } from './user/user.module';
 import { NODE_ENV } from './app.constants';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
+import { ProductModule } from './product/product.module';
+import { OrderModule } from './order/order.module';
+import { SaleModule } from './sale/sale.module';
+import { WaiterModule } from './waiter/waiter.module';
 import * as Joi from '@hapi/joi';
 
 @Module({
@@ -30,6 +34,10 @@ import * as Joi from '@hapi/joi';
         GOOGLE_AUTH_CLIENT_SECRET: Joi.string().required(),
       }),
     }),
+    ProductModule,
+    OrderModule,
+    SaleModule,
+    WaiterModule,
   ],
   controllers: [AppController],
   providers: [
