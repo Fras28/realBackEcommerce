@@ -41,7 +41,7 @@ async function bootstrap() {
   app.use(helmet());
   app.use(
     session({
-      name: 'nest-js-api',
+      name: 'restaurant-erp',
       secret: sessionSecret,
       resave: false,
       saveUninitialized: false,

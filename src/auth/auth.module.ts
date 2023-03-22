@@ -14,7 +14,6 @@ import { LocalStrategy } from './strategies/local.strategy';
   imports: [
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
     forwardRef(() => UserModule),
-    AuthModule,
   ],
   providers: [
     AuthService,
